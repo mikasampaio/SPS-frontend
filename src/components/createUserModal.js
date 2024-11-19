@@ -25,7 +25,7 @@ export default function CreateUser({ visible, setVisible, getUsers }) {
     resolver: yupResolver(schema),
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, register } = methods;
 
   const onSubmit = async (data) => {
     try {
@@ -69,9 +69,28 @@ export default function CreateUser({ visible, setVisible, getUsers }) {
             >
               <div className="flex flex-col gap-2">
                 <Input name="name" label="Nome" type="text" />
-                <Input name="type" label="Tipo" type="text" />
                 <Input name="email" label="E-mail" type="email" />
                 <Input name="password" label="Senha" type="password" />
+
+                <div>
+                  <input
+                    type="radio"
+                    value="admin"
+                    checked
+                    {...register("type")}
+                  />
+                  <label>Administrador</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="drone"
+                    value="user"
+                    {...register("type")}
+                  />
+                  <label>Usuário</label>
+                </div>
               </div>
 
               <Button

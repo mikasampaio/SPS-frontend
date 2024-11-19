@@ -40,7 +40,7 @@ export default function UserEdit() {
       const response = await UserService.updateUser(userId, data);
 
       if (response) {
-        navigate("/users");
+        navigate("/");
       }
     } catch (error) {
       console.log("Error:", error);

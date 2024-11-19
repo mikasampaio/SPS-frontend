@@ -9,6 +9,10 @@ function Users() {
   const [isVisible, setIsVisible] = useState(false);
   const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("token")) navigate("/login");
+  }, [localStorage.getItem("token")]);
+
   const getUsers = async () => {
     try {
       const response = await UserService.get();

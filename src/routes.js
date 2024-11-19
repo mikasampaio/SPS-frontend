@@ -7,11 +7,11 @@ import UserEdit, { userLoader } from "./pages/UserEdit";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Users />,
   },
   {
-    path: "/users",
-    element: <Users />,
+    path: "/login",
+    element: <Home />,
   },
   {
     path: "/users/:userId",

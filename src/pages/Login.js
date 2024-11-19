@@ -21,7 +21,7 @@ export default function Login() {
 
       if (response) {
         localStorage.setItem("token", response.token);
-        navigate("/users");
+        navigate("/");
       }
     } catch (error) {
       console.log("Error:", error);
