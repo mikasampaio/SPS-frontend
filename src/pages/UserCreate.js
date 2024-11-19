@@ -26,6 +26,7 @@ export default function UserEdit() {
   };
 
   useEffect(() => {
+    if (!userId) return;
     getUser();
   }, [userId]);
 
@@ -33,7 +34,7 @@ export default function UserEdit() {
     if (user) {
       methods.reset(user);
     }
-  }, [user]);
+  }, [userId]);
 
   const onSubmit = async (data) => {
     try {
@@ -48,26 +49,14 @@ export default function UserEdit() {
   };
 
   return (
-    <section className="flex flex-col gap-5 p-4">
-      <h2 className="text-2xl font-bold">Alterar Usuário</h2>
-
-      <FormProvider {...methods}>
-        <div className="flex gap-5 w-full">
-          <Input name="name" label="Nome" type="text" />
-          <Input name="type" label="Tipo" type="text" />
-        </div>
-
-        <div className="flex gap-5 w-full">
-          <Input name="email" label="E-mail" type="email" />
-          <Input name="password" label="Senha" type="password" />
-        </div>
-      </FormProvider>
-
-      <Button
-        label="Editar usuário"
-        onClick={handleSubmit(onSubmit)}
-        type="submit"
-      />
-    </section>
+    <FormProvider {...methods}>
+      <section>
+        <Input name="name" label="Nome" type="text" />
+        <Input name="type" label="Tipo" type="text" />
+        <Input name="email" label="E-mail" type="email" />
+        <Input name="password" label="Senha" type="password" />
+        <Button label="Entrar" onClick={handleSubmit(onSubmit)} type="submit" />
+      </section>
+    </FormProvider>
   );
 }
